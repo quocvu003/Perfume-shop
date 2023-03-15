@@ -16,39 +16,39 @@ class MenuController extends Controller
         $this->menuService = $menuService;
     }
 
-    public function create ()
+    public function create()
     {
-        return view('admin.menu.add',[
+        return view('admin.menu.add', [
             'title' => 'Thêm danh mục',
             'menus' => $this->menuService->getParent()
         ]);
     }
 
-    
+
     public function store(CreateFormRequest $request)
     {
         $this->menuService->create($request);
         return redirect()->back();
     }
 
-    public function index ()
+    public function index()
     {
-        return view('admin.menu.list',[
+        return view('admin.menu.list', [
             'title' => 'Danh sách Danh mục mới nhất',
             'menus' => $this->menuService->getAll()
         ]);
     }
 
-    public function show (Menu $menu)
-    {        
-        return view('admin.menu.edit',[
-            'title' => 'Chỉnh sửa danh mục:'. $menu->name,
+    public function show(Menu $menu)
+    {
+        return view('admin.menu.edit', [
+            'title' => 'Chỉnh sửa danh mục:' . $menu->name,
             'menu' => $menu,
             'menus' => $this->menuService->getParent()
         ]);
     }
 
-    public function update(Menu $menu ,CreateFormRequest $request)
+    public function update(Menu $menu, CreateFormRequest $request)
     {
         $this->menuService->update($request, $menu);
         return redirect('/admin/menus/list');
@@ -57,10 +57,10 @@ class MenuController extends Controller
     public function destroy(Request $request)
     {
         $result = $this->menuService->destroy($request);
-        if($result){
+        if ($result) {
             return response()->json([
                 'error' => false,
-                'masager' =>'Xóa thành công'
+                'masager' => 'Xóa thành công'
             ]);
         }
         return response()->json([

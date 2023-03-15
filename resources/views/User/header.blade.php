@@ -1,16 +1,15 @@
-
 <header>
     @php $menusHtml = \App\Helpers\Helper::menus($menus); @endphp
 
     <!-- Header desktop -->
     <div class="container-menu-desktop">
-        
+
 
         <div class="wrap-menu-desktop">
             <nav class="limiter-menu-desktop container">
-                
-                <!-- Logo desktop -->		
-                <a href="#" class="logo">
+
+                <!-- Logo desktop -->
+                <a href="/" class="logo">
                     <img src="/template/images/icons/logo-01.png" alt="IMG-LOGO">
                 </a>
 
@@ -18,13 +17,13 @@
                 <div class="menu-desktop">
                     <ul class="main-menu">
                         <li class="active-menu"><a href="/">Trang Chủ</a> </li>
-                            {!! $menusHtml !!}
+                        {!! $menusHtml !!}
                         <li>
                             <a href="contact.html">Về Chúng Tôi</a>
-                        </li>    
-                        
+                        </li>
 
-                        
+
+
                     </ul>
                 </div>
 
@@ -34,19 +33,20 @@
                         <i class="zmdi zmdi-search"></i>
                     </div>
 
-                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="2">
+                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
+                        data-notify="{{ !is_null(\Session::get('carts')) ? count(\Session::get('carts')) : 0 }}">
                         <i class="zmdi zmdi-shopping-cart"></i>
                     </div>
 
-                    
+
                 </div>
             </nav>
-        </div>	
+        </div>
     </div>
 
     <!-- Header Mobile -->
     <div class="wrap-header-mobile">
-        <!-- Logo moblie -->		
+        <!-- Logo moblie -->
         <div class="logo-mobile">
             <a href="index.html"><img src="/template/images/icons/logo-01.png" alt="IMG-LOGO"></a>
         </div>
@@ -57,11 +57,12 @@
                 <i class="zmdi zmdi-search"></i>
             </div>
 
-            <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="2">
+            <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart"
+                data-notify="2">
                 <i class="zmdi zmdi-shopping-cart"></i>
             </div>
 
-            
+
         </div>
 
         <!-- Button show menu -->
@@ -86,8 +87,8 @@
 
         </ul>
 
-        
-            
+
+
     </div>
 
     <!-- Modal Search -->

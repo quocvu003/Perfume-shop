@@ -19,7 +19,8 @@ class ProductAdminService
 
     protected function isValidPrice($request)
     {
-        if ($request->input('price') != 0 && $request->input('price_sale') != 0
+        if (
+            $request->input('price') != 0 && $request->input('price_sale') != 0
             && $request->input('price_sale') >= $request->input('price')
         ) {
             Session::flash('error', 'Giá giảm phải nhỏ hơn giá gốc');
@@ -56,7 +57,7 @@ class ProductAdminService
     public function get()
     {
         return Product::with('menu')
-            ->orderByDesc('id')->paginate(15);
+            ->orderByDesc('id')->paginate(10);
     }
 
     public function update($request, $product)
@@ -86,7 +87,4 @@ class ProductAdminService
 
         return false;
     }
-
-
-
 }

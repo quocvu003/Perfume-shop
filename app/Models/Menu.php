@@ -8,13 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Menu extends Model
 {
     use HasFactory;
-    
-    protected $fillable =[
+
+    protected $fillable = [
         'name',
         'parent_id',
-        'description',       
+        'description',
         'content',
         'active',
     ];
 
+    // load one to many cho danh muc
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'menu_id', 'id');
+    }
 }
