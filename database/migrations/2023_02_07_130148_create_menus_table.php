@@ -16,13 +16,12 @@ return new class extends Migration
         Schema::create('menus', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string( column: 'name',length: 255);
-            $table->integer( column: 'parent_id');
-            $table->text( column: 'description');
-            $table->longText (column: 'content');
-            $table->string( column: 'slug',length: 255)->unique();
-            $table->integer (column: 'active');
-
+            $table->string(column: 'name', length: 255);
+            $table->integer(column: 'parent_id');
+            $table->text(column: 'description');
+            $table->longText(column: 'content');
+            $table->string(column: 'slug', length: 255)->unique();
+            $table->integer(column: 'active');
         });
     }
 

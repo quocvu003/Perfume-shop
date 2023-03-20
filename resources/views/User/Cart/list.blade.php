@@ -14,17 +14,17 @@
                                 <table class="table-shopping-cart">
                                     <tbody>
                                         <tr class="table_head">
-                                            <th class="column-1">Product</th>
+                                            <th class="column-1">Sản phẩm</th>
                                             <th class="column-2"></th>
-                                            <th class="column-3">Price</th>
-                                            <th class="column-4">Quantity</th>
-                                            <th class="column-5">Total</th>
+                                            <th class="column-3">Giá</th>
+                                            <th class="column-4">Số lượng</th>
+                                            <th class="column-5">Tổng</th>
                                             <th class="column-6">&nbsp;</th>
                                         </tr>
 
                                         @foreach ($products as $key => $product)
                                             @php
-                                                $price = $product->price_sale != 0 ? $product->price : $product->price_sale;
+                                                $price = $product->price;
                                                 $priceEnd = $price * $carts[$product->id];
                                                 $total += $priceEnd;
                                             @endphp
@@ -68,11 +68,11 @@
 
                                     <div
                                         class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
-                                        Apply coupon
+                                        Mã Giảm Giá
                                     </div>
                                 </div>
 
-                                <input type="submit" value="Update Cart" formaction="/update-cart"
+                                <input type="submit" value="Cập Nhật Số Lượng" formaction="/update-cart"
                                     class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">
                                 @csrf
                             </div>

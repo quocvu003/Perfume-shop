@@ -22,7 +22,7 @@ return new class extends Migration
             $table->integer('price')->nullable();
             $table->integer('price_sale')->nullable();
             $table->integer('active');
-            $table->integer('thumb');
+            $table->string('thumb');
             $table->timestamps();
         });
     }

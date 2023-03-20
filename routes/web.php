@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CartController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Users\LoginController;
 use App\Http\Controllers\Admin\MainController;
@@ -12,10 +13,15 @@ use App\Http\Controllers\MainUserController;
 use App\Http\Controllers\MenuUserController;
 use App\Http\Controllers\ProductUserController;
 
-Route::get('/admin/login', [LoginController::class, 'index'])->name('login');
+use App\Http\Controllers\Admin\Users\AuthController;
 
-Route::post('/admin/login/store', [LoginController::class, 'store']);
+Route::get('login', [AuthController::class, 'login'])->name('login');
 
+Route::post('login_action', [AuthController::class, 'login_action']);
+
+Route::get('register', [AuthController::class, 'register'])->name('register');
+Route::post('register_action', [AuthController::class, 'register_action']);
+Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 
 
@@ -59,13 +65,11 @@ Route::middleware(['auth'])->group(function () {
         Route::post('upload/services', [UploadController::class, 'store']);
 
         #Cart
-        Route::get('customers', [\App\Http\Controllers\Admin\CartController::class, 'index']);
-        Route::get('customers/view/{customer}', [\App\Http\Controllers\Admin\CartController::class, 'show']);
+        Route::get('customers', [CartController::class, 'index']);
+        Route::get('customers/view/{customer}', [CartController::class, 'show']);
     });
 });
-Route::get('/register', [RegisterController::class, 'register'])->name('register');
-Route::post('/register/action', [RegisterController::class, 'action']);
-Route::get('/logout', [RegisterController::class, 'logout']);
+
 
 
 

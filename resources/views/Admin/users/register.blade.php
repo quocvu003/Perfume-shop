@@ -15,7 +15,7 @@
             <div class="card-body register-card-body">
                 <p class="login-box-msg">Register a new membership</p>
                 @include('admin.alert')
-                <form action="/register/action" method="post">
+                <form action="/register_action" method="post">
                     <div class="input-group mb-3">
                         <input type="text" name="name" class="form-control" placeholder="Full name">
                         <div class="input-group-append">
@@ -57,7 +57,7 @@
                         </div>
                         <!-- /.col -->
                     </div>
-
+                    @csrf
                 </form>
 
 
