@@ -35,7 +35,8 @@
                                                     </div>
                                                 </td>
                                                 <td class="column-2">{{ $product->name }}</td>
-                                                <td class="column-3">{{ number_format($price, 0, '', '.') }}</td>
+                                                <td class="column-3">{{ number_format($price, 0, '', '.') }}<span
+                                                        style="color: red">đ</span></td>
                                                 <td class="column-4">
                                                     <div class="wrap-num-product flex-w m-l-auto m-r-0">
                                                         <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
@@ -51,7 +52,8 @@
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td class="column-5">{{ number_format($priceEnd, 0, '', '.') }}</td>
+                                                <td class="column-5">{{ number_format($priceEnd, 0, '', '.') }}<span
+                                                        style="color: red">đ</span></td>
                                                 <td class="p-r-15">
                                                     <a href="/carts/delete/{{ $product->id }}">Xóa</a>
                                                 </td>
@@ -94,7 +96,7 @@
 
                                 <div class="size-209 p-t-1">
                                     <span class="mtext-110 cl2">
-                                        {{ number_format($total, 0, '', '.') }}
+                                        {{ number_format($total, 0, '', '.') }}<span style="color: red">đ</span>
                                     </span>
                                 </div>
                             </div>

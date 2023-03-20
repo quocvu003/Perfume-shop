@@ -95,7 +95,7 @@ class CartService
             $this->infoProductCart($carts, $customer->id);
             // DB::commit()k lỗi sẽ lưu
             DB::commit();
-            Session::flash('success', 'Đặt Hàng Thành Công, Đã lưu vào database nhưng chưa có view :D');
+            Session::flash('success', 'Đặt Hàng Thành Công');
 
             #Queue
             SendMail::dispatch($request->input('email'))->delay(now()->addSeconds(2));

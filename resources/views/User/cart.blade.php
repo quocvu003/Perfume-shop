@@ -12,13 +12,19 @@
         </div>
 
         <div class="header-cart-content flex-w js-pscroll">
-            @php $sumPriceCart = 0; @endphp
+
+            @php $total = 0; @endphp
+            @php $priceEnd = 0; @endphp
+
             <ul class="header-cart-wrapitem w-full">
-                @if (count($products) > 0)
-                    @foreach ($products as $key => $product)
+
+                @if (count($productsCart) > 0)
+                    @foreach ($productsCart as $key => $product)
                         @php
-                            $price = \App\Helpers\Helper::price($product->price, $product->price_sale);
-                            $sumPriceCart += $product->price_sale != 0 ? $product->price : $product->price_sale;
+                            
+                            $price = $product->price;
+                            $priceEnd = $price * $carts[$product->id];
+                            $total += $priceEnd;
                         @endphp
                         <li class="header-cart-item flex-w flex-t m-b-12">
                             <div class="header-cart-item-img">
@@ -33,16 +39,23 @@
                                 <span class="header-cart-item-info">
                                     {!! $price !!}
                                 </span>
+                                <span class="header-cart-item-info mr-2">
+                                    X <span style="color: red">{!! $carts[$product->id] !!}</span>
+                                </span>
                             </div>
                         </li>
                     @endforeach
                 @endif
 
+
             </ul>
 
             <div class="w-full">
                 <div class="header-cart-total w-full p-tb-40">
-                    Total: {{ number_format($sumPriceCart, '0', '', '.') }}
+
+                    Total: {{ number_format($total, '0', '', '.') }}
+
+
                 </div>
 
                 <div class="header-cart-buttons flex-w w-full">

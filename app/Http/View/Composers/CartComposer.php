@@ -18,7 +18,11 @@ class CartComposer
     public function compose(View $view)
     {
         $carts = Session::get('carts');
-        if (is_null($carts)) return [];
+        if (is_null($carts)) {
+            $view->with('productsCart', [])->with('carts', []);
+            return;
+        }
+
 
         $productId = array_keys($carts);
         $products = Product::select('id', 'name', 'price', 'price_sale', 'thumb')
@@ -26,6 +30,6 @@ class CartComposer
             ->whereIn('id', $productId)
             ->get();
 
-        $view->with('products', $products);
+        $view->with('productsCart', $products)->with('carts', $carts);
     }
 }
